@@ -1,0 +1,27 @@
+.titulo{
+    font-family: 'Gloria Hallelujah';
+    color:red;
+}
+
+.item-mundo{
+    text-align: center;
+    padding: 10px 45px;
+}
+
+    .item-mundo a, 
+    .item-mundo img{
+        margin: 0 auto;
+    }
+
+    .mundo-titulo{
+        font-family: 'Gloria Hallelujah';
+        font-size: 30px;
+        text-align: left;
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+
+.universo-name{
+    font-family: 'Gloria Hallelujah';
+    font-size: 20px;
+}

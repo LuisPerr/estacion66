@@ -1,0 +1,46 @@
+.ui-base,
+.login-gam,
+body,
+html
+{
+    width: 100%;
+    height: 100%;
+}
+
+.login-gam{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.gam-login{
+    background-color: white;
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.frm-gam{
+    width: 70%;
+    margin: 40px auto;
+}
+
+.frm-gam img{
+    margin: 0 auto;
+}
+
+.gam-descripcion{
+    background-color: green;
+    width: 50%;
+    height: 100%;
+    float: left;
+    overflow: hidden;
+
+    background: url(../images/fondoLogin.jpg) no-repeat fixed center;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+   text-align: center;
+}
+

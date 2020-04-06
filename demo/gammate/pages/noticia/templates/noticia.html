@@ -1,0 +1,222 @@
+<div ng-init="init();">
+    <div class=container>
+    	<div class="pnl-perfil">
+    		<div class="col-sm-12" ng-show="inCatego">
+    			<div class="row">
+	    			<div class="col-sm-3"> </div>
+
+	    			<div class="col-sm-6"> 
+	    				<div class="pnl-search-o">
+							<i class="fa fa-search"></i>
+							<input type="" name="" class="busquedaGeneral" placeholder="Buscar" ng-model="busquedaGeneral" ng-keyup="keyEnter($event)">
+
+							<i class="fa fa-filter pointer" aria-hidden="true" ng-click="inCatego = false" style="padding:10px 8px; "></i>
+						</div> <br>
+
+	    				<div ng-show="idCategoria == 0" ng-repeat="(key, cat) in categorias" class="catego-item" style="background-image: url(images/categorias/{{cat.imagen}})">
+	    					<div class="hover" ng-click="selectCategoria(key)"> {{cat.categoria}} </div>
+	    				</div>
+
+	    				<div ng-show="idCategoria != 0" style="text-align: center;">
+	    					<div style="width: 150px; height: 150px; overflow: hidden; border-radius: 90px; margin: 0 auto;">
+		    					<img src="images/categorias/{{ categoria.imagen }}" height="150">
+		    				</div>
+		    				<h4>{{categoria.categoria}}</h4>
+
+		    				<button class="btn btn-default" ng-click="mostrarCategoria()">Mostrar todos de esta categoría</button>
+
+		    				<br><br>
+		    				<a href="" ng-click="idCategoria = 0"> Regresar a categorías </a>
+	    				</div>
+	    				
+	    			</div>
+	    		</div>
+	    	</div>
+
+    		<div class="col-sm-12">
+	    		<!-- <h1 class="pull-left">Enlaces</h1> -->
+
+	    		<!-- <button class="btn btn-success pull-right" ng-click="openNewNews();">
+	    			Agregar noticia <i class="fa fa-plus-circle"></i>
+	    		</button>
+
+    			<div class="pull-right" style="width: 250px; margin-right: 10px;">
+    				<input type="" name="" placeholder="Buscar" class="form-control" ng-model="search">
+    			</div> -->
+    		</div>
+
+
+    		<div class="panel pnl-square" ng-show="!inCatego">
+				<div>
+					<div class="panel-body">
+						<div class="frm-search">
+							<div class="pnl-search">
+								<i class="fa fa-search"></i>
+								<input type="" name="" class="busquedaGeneral" placeholder="Buscar" ng-model="busquedaGeneral" ng-keyup="keyEnter($event)">
+							</div>
+
+							<div class="no-resultados">
+								<span class="panel-title">{{ contentLinks }}</span><small><i>Resultado</i><i ng-hide="contentLinks == 1">s</i></small>
+								<div class="pull-right" ng-hide="contentLinks == 0">
+									<a href="" ng-click="busquedaGeneral == '';inCatego = true">
+										<i class="fa fa-undo text-info" aria-hidden="true" style="font-size: 20px; margin-top: 10px;"></i>
+									</a>
+								</div>
+							</div>
+							<br>
+
+							<div class="text-center filtros-control more-filter" ng-click="filtrosControl(1)"><small>Búsqueda Avanzada<br></small>﹀</div>
+
+
+							<div style="display: none;" class="filters">
+								<label><small>Materia</small></label>
+								<select class="form-control-search" ng-change="temaByIdMat( busqueda.idMateria )" ng-model="busqueda.idMateria">
+									<option value="0" selected="">Todas</option>
+									<option ng-repeat="(key, mat) in materias" value="{{mat.idMateria}}">{{ mat.materia }}</option>
+								</select>
+
+								<label><small>Tema</small></label>
+								<select class="form-control-search" ng-model="busqueda.idTema">
+									<option value="0" selected="">Todas</option>
+									<option ng-repeat="(key, tem) in temas" value="{{tem.idTema}}">{{ tem.tema }}</option>
+								</select>
+								
+								<label><small>Categoría</small></label>
+								<select class="form-control-search" ng-model="busqueda.idCategoria">
+									<option value="0" selected="">Todas</option>
+									<option ng-repeat="(key, cat) in categorias" value="{{cat.idCategoria}}">{{ cat.categoria }}</option>
+								</select>
+
+								<label><small>Título</small></label>
+								<input type="" class="form-control-search" name="" ng-model="busqueda.titulo">
+
+								<label><small>Descripción</small></label>
+								<input type="" class="form-control-search" name="" ng-model="busqueda.descripcion">
+
+								<label><small>Palabras Clave</small></label>
+								<input type="" class="form-control-search" name="" ng-model="busqueda.clave">
+
+								<label><small>Idioma</small></label>
+								<select class="form-control-search" ng-model="busqueda.idIdioma">
+									<option value="0" selected="">Todas</option>
+									<option ng-repeat="(key, idi) in idiomas" value="{{idi.idIdioma}}">{{ idi.idioma }}</option>
+								</select>
+
+								<div class="text-center filtros-control" ng-click="filtrosControl(2)"> ︿<small><br>Mostrar menos</small> </div>
+							</div>
+
+							<button class="btn btn-success btn-sm btn-buscar" ng-click="enlacesTodas()">Buscar</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+    		<div class="col-sm-12" ng-show="!inCatego">
+    			<div class="row">
+	    			<div class="col-sm-1"></div>
+	    			<div class="col-sm-3">
+	    				
+	    			</div>
+
+	    			<div class="col-sm-6 panel-resultados">
+			    		<!-- <div class="panel panel-default" ng-repeat="not in Noticias.data | filter: search"> -->
+			    		<div ng-show="contentLinks != 0" class="panel panel-default pnl-enlaces">		
+							<div class="panel-heading">
+						    	<h3 class="panel-title">resultado de la búsqueda</h3>
+						  	</div>
+
+						  	<div>
+						  		<div class="panel-body" ng-repeat="( key, enlace ) in Enlaces | filter: search" >
+									<div class="col-sm-12 pnl-titulo">
+										<div> <img src="https://www.google.com/s2/favicons?domain={{enlace.fuente}}" width="12"> <small>{{enlace.fuente}}</small></div>
+										<a href="" target="_blank" ng-click="viewAdd( enlace.idEnlace, key, 1 )">
+											<b ng-bind-html="enlace.titulo"></b>
+										</a>
+									</div>
+									
+								    <div class="col-sm-12">
+								    	<table>
+								    		<tr>
+								    			<td valign="top">
+								    				<!-- Imagen si la fuente es YouTube -->
+								    				<a href="" target="_blank" ng-click="viewAdd( enlace.idEnlace, key, 1 )">
+									    				<img ng-show = "enlace.idFuente == 246" src="https://img.youtube.com/vi/{{enlace.URL.split('/').pop()}}/default.jpg" width="100" style="border-radius: 5px;">
+									    			</a>
+								    			</td>
+								    			<td valign="top" style="padding-left: 5px;">
+								    				<div style="float: left;" ng-bind-html="enlace.descripcion"></div>
+								    				<br><br><br>
+											    	<div class="data-text">
+											    		<small>
+												    		<div>
+												    			<b>Categoría</b> <span>{{enlace.categoria}}</span>
+												    		</div>
+												    		<div>
+												    			<b>Autor</b> <span>{{enlace.autor}}</span>
+												    		</div>
+											    		</small>
+											    	</div>
+								    			</td>
+								    		</tr>
+								    	</table>
+								    </div>
+								    <div class="pnl-social">
+								    	<table width="100%" border="0">
+								    		<tr>
+								    			<td width="40" align="center">
+													<i class="fa fa-eye ico-social" aria-hidden="true"></i>
+												</td>
+								    			<td width="50">{{enlace.vistos}}</td>
+
+								    			<td></td>
+								    			
+												<td width="40">
+													<i ng-show="enlace.guardado == 0" class="fa fa-star-o ico-social" style="cursor: pointer;" aria-hidden="true" ng-click="favoritoAdd( enlace.idEnlace, key );"></i>
+
+													<i ng-show="enlace.guardado != 0" class="fa fa-star ico-social" style="cursor: pointer;" aria-hidden="true" ng-click="favoritoRemove( enlace.idEnlace, key );"></i>
+												</td>
+								    		</tr>
+								    	</table>
+								    </div>
+								</div>
+							</div>
+						  	<!-- aqui termina -->						  	
+	    				</div>
+
+	    				<div class="row">
+							<div class="col-sm-3" ng-show="contentLinks == 0"></div>
+				    		<div class="col-sm-9" ng-show="contentLinks == 0">
+				    			<center>
+				    				<br><br><br><br>
+				    				<i class="fa fa-flag" aria-hidden="true" style="font-size: 100px; color: #eee;"></i>
+				    				<p>
+				    					<small>Introduce tus parámetros de búsqueda</small>
+				    					<br>
+				    					<small><a href="" ng-click="inCatego = true">Regresar a categorías</a></small>
+				    				</p>
+				    			</center>
+				    		</div>
+						</div>
+    				</div>
+				</div>
+    		</div>
+
+    		<div class="col-sm-12 hidden" >
+    			<div class="pull-right">
+	    			<button class="btn btn-default" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+				        Anterior
+				    </button>
+				    {{currentPage+1}}/{{numberOfPages()}}
+				    <button class="btn btn-default" ng-disabled="currentPage >= Noticias.data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
+				        Siguiente
+				    </button>
+			    </div>
+    		</div>
+
+    		<!-- <div class="col-sm-12"> <br><br><br><br> </div> -->
+
+    	</div>
+    </div>
+</div>
+

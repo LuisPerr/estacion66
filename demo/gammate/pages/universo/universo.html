@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-sm-1">&nbsp;</div>
+    <div class="col-sm-10">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="universo-titulo">¿QUÉ UNIVERSO QUIERES JUGAR?</h1>
+            </div>
+
+            <div class="col-sm-4 item-universo" ng-repeat="(key, Uni) in Universos" ng-click="openMundo();">
+                <img src="../../images/universos/{{ Uni.Img }}" width="100%">
+                <a class="boton botn-sm boton-color-tec text-plumon text-size-sm boton-sm" ng-click="openMundo();">{{ Uni.NombreUniverso }}</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1">&nbsp;</div>
+</div>

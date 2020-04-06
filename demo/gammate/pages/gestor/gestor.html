@@ -1,0 +1,105 @@
+<div class=dashboard-page>
+    <div class="header-admin" style="background-color: #000 !important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="header-icons">
+                        <i class="fa fa-bars burguer-menu" aria-hidden="true" ng-click="showMenu();"></i>
+                        <img src="images/logo_tec_blanco.png" class="logo-menu" width="120" class="logo">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel-perfil pull-right">
+                        <button class="btn btn-link bth-header" ng-click="pageMetrica();">
+                            <i class="fa fa-bar-chart" aria-hidden="true"></i> Estadísticas
+                        </button>
+                        <a href="/#/enlaces/home" target="_blank" class="btn btn-link bth-header" ng-click="pnlConocenos();" style="margin-right: 10px; border-radius: 0px; ">
+                            <img src="images/favicon.png" width="20"> Merídio
+                         </a>
+                         <img src="images/logo_meridio_blanco_hor.png" width="100">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-wrap" style="display: none;" ng-click="hideMenuParent($event);">
+        <div class="vertical-menu">
+            <div class="nav-header">
+                <div class="hideMenu" ng-click="hideMenu()">
+                    <i class="fa fa-times"></i>
+                </div>
+                <center>
+                    <br><br>
+                    <img src="images/logo_tec_blanco.png" width="150">
+                    <br><br>
+                    <span>{{DataUser.nombre}}</span>
+                </center>
+            </div>
+            <div class="nav-content">
+                <ul class="nav">
+                    <li ng-click="pageEnlaces()">
+                        <table width="100%" border="0">
+                            <tr> <td>Enlaces</td> </tr>
+                        </table>
+                    </li>
+                    <li ng-click="pageMateria()">
+                        <table width="100%" border="0">
+                            <tr> <td>Materia</td> </tr>
+                        </table>
+                    </li>
+                    <li ng-click="pageTema()">
+                        <table width="100%" border="0">
+                            <tr> <td>Tema</td> </tr>
+                        </table>
+                    </li>
+                    <li ng-click="pageCategoria()">
+                        <table width="100%" border="0">
+                            <tr> <td>Categoría</td> </tr>
+                        </table>
+                    </li>
+                    <li ng-click="pageIdioma()">
+                        <table width="100%" border="0">
+                            <tr> <td>Idiomas</td> </tr>
+                        </table>
+                    </li>
+                    <li ng-click="pageFuente()">
+                        <table width="100%" border="0">
+                            <tr> <td>Fuente</td> </tr>
+                        </table>
+                    </li>
+                    <li ng-click="pageFormato()">
+                        <table width="100%" border="0">
+                            <tr> <td>Formato</td> </tr>
+                        </table>
+                    </li>
+                    <li ng-click="pageLicencia()">
+                        <table width="100%" border="0">
+                            <tr> <td>Licencia</td> </tr>
+                        </table>
+                    </li>
+                    <li ng-click="close()">
+                        <table width="100%" border="0">
+                            <tr> <td>Cerrar sesión</td> </tr>
+                        </table>
+                    </li>
+                </ul>
+
+                <div class="img-tec-negro">
+                    <img src="images/logo_meridio.png" width="100">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contenido col-sm-12 main" ui-view> </div>
+</div>
+
+<div class="loading" style="display: none;">
+    <table width="100%" height="100%" cellspacing="0" cellpadding="0" >
+        <tr>
+            <td valign="middel" align="center">
+                <h1><img src="images/loading.gif" width="30"></h1>
+            </td>
+        </tr>
+    </table>
+</div>
